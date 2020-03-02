@@ -9,8 +9,10 @@ import {
 import ProductItem from '../components/ProductItem';
 import { AntDesign } from '@expo/vector-icons';
 import { ProductContext } from '../contexts/ProductsContext';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductsScreen = props => {
+  const navigation = useNavigation();
   const { pdts, addProdToCart, cart } = useContext(ProductContext);
 
   return (
@@ -20,7 +22,11 @@ const ProductsScreen = props => {
           data={pdts}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <ProductItem item={item} addProdToCart={addProdToCart} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Product Detail', { item })}
+            >
+              <ProductItem item={item} addProdToCart={addProdToCart} />
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -28,7 +34,6 @@ const ProductsScreen = props => {
         <Text
           style={{
             fontSize: 18,
-            fontWeight: 'bold',
             alignSelf: 'center',
             marginVertical: 5
           }}
@@ -44,13 +49,13 @@ const ProductsScreen = props => {
               alignSelf: 'center',
               alignContent: 'center',
               color: '#971818',
-              fontSize: 18
+              fontSize: 14
             }}
           >
             View Cart
           </Text>
           <View>
-            <AntDesign name="right" size={22} color="#971818" />
+            <AntDesign name="right" size={18} color="#971818" />
           </View>
         </TouchableOpacity>
       </View>
@@ -64,8 +69,8 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   button: {
-    height: 50,
-    width: 200,
+    height: 40,
+    width: 120,
     borderWidth: 2,
     borderColor: '#971818',
     borderRadius: 5,

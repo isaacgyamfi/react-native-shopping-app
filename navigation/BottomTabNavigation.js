@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -12,6 +12,9 @@ import CheckoutOptionScreen from '../screens/CheckoutOptionScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import AccountScreen from '../screens/AccountScreen';
 import MessageScreen from '../screens/MessageScreen';
+import ProductDetail from '../screens/ProductDetail';
+import { View, Text } from 'react-native';
+import { ProductContext } from '../contexts/ProductsContext';
 
 const Stack = createStackNavigator();
 const StackScreen = Stack.Screen;
@@ -38,6 +41,7 @@ const ProductsStack = () => {
         component={ProductsScreen}
         options={{ headerTitle: props => <Header {...props} /> }}
       />
+      <StackScreen name="Product Detail" component={ProductDetail} />
     </Stack.Navigator>
   );
 };
@@ -51,7 +55,7 @@ const CartStack = () => {
         options={{ headerTitle: props => <Header {...props} /> }}
       />
       <StackScreen name="Checkout" component={CheckoutOptionScreen} />
-      <StackScreen name="Message" component={MessageScreen} />
+      <StackScreen name="Cash Payment" component={MessageScreen} />
       <StackScreen name="Payment" component={CardPaymentScreen} />
     </Stack.Navigator>
   );
@@ -72,6 +76,7 @@ const NotificationStack = () => {
 const Tab = createBottomTabNavigator();
 const Screen = Tab.Screen;
 const MainTab = () => {
+  const { cart } = useContext(ProductContext);
   return (
     <Tab.Navigator
       tabBarOptions={{ activeTintColor: '#971818', inactiveTintColor: 'gray' }}
@@ -108,13 +113,36 @@ const MainTab = () => {
         name="Cart"
         component={CartStack}
         options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Ionicons
-              focused={focused}
-              name="md-cart"
-              size={26}
-              color={color}
-            />
+          tabBarIcon: ({ focused, color, badgeCount = cart.length }) => (
+            <View>
+              <Ionicons
+                focused={focused}
+                name="md-cart"
+                size={26}
+                color={color}
+              />
+              {badgeCount > 0 && (
+                <View
+                  style={{
+                    position: 'absolute',
+                    right: -6,
+                    top: -3,
+                    backgroundColor: 'red',
+                    borderRadius: 6,
+                    width: 12,
+                    height: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <Text
+                    style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}
+                  >
+                    {badgeCount}
+                  </Text>
+                </View>
+              )}
+            </View>
           )
         }}
       />

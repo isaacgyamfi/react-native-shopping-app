@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { globalStyles } from './global';
 
 const ProductItem = ({ item, addProdToCart }) => {
   return (
@@ -21,16 +22,7 @@ const ProductItem = ({ item, addProdToCart }) => {
           <Text style={{ fontSize: 15 }}>GH₵{item.price}</Text>
         </View>
         <TouchableOpacity
-          style={{
-            backgroundColor: '#971818',
-            height: 40,
-            width: 40,
-            color: '#fff',
-            padding: 5,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 20
-          }}
+          style={globalStyles.addToCartBtn}
           onPress={() => addProdToCart(item)}
         >
           <AntDesign name="shoppingcart" size={20} color="#fff" />
