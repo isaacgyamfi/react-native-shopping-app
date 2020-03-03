@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 
 const NotificationScreen = () => {
   return (
-    <View>
-      <Text>NotificationScreen</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ fontSize: 18 }}>No new notification</Text>
     </View>
   );
 };

@@ -7,7 +7,7 @@ const CheckoutOptionScreen = props => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View>
         <TouchableOpacity
-          onPress={() => props.navigation.navigate('Message')}
+          onPress={() => props.navigation.navigate('Cash Payment')}
           style={{
             height: 50,
             width: 200,

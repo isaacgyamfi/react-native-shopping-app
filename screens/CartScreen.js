@@ -11,70 +11,78 @@ const CartScreen = props => {
   );
   return (
     <View style={styles.container}>
-      <View style={{ flex: 9 }}>
-        <FlatList
-          data={cart}
-          renderItem={({ item }) => (
-            <CartItem item={item} removeProdFromCart={removeProdFromCart} />
-          )}
-        />
-      </View>
-      <View style={{ flex: 3 }}>
-        <Text
-          style={{
-            fontSize: 15,
-            alignSelf: 'center',
-            marginVertical: 5
-          }}
-        >
-          Number of items in cart: {cart.length}
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            alignSelf: 'center',
-            marginVertical: 5
-          }}
-        >
-          Total cost of items in cart:{' '}
-          <Text style={{ fontWeight: 'bold', color: '#971818' }}>
-            GH₵{calcTotalCostInCart(cart)}
-          </Text>
-        </Text>
-        <View>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('Checkout')}
-            style={{
-              height: 50,
-              width: 150,
-              borderWidth: 2,
-              borderColor: '#971818',
-              borderRadius: 5,
-              padding: 2,
-              marginVertical: 5,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'center',
-              flexDirection: 'row'
-            }}
-          >
+      {cart.length < 1 ? (
+        <View style={{ alignSelf: 'center' }}>
+          <Text style={{ fontSize: 18 }}>No item in cart</Text>
+        </View>
+      ) : (
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 9 }}>
+            <FlatList
+              data={cart}
+              renderItem={({ item }) => (
+                <CartItem item={item} removeProdFromCart={removeProdFromCart} />
+              )}
+            />
+          </View>
+          <View style={{ flex: 3 }}>
             <Text
               style={{
+                fontSize: 15,
                 alignSelf: 'center',
-                alignContent: 'center',
-                color: '#971818',
-                fontSize: 18,
-                marginHorizontal: 5
+                marginVertical: 5
               }}
             >
-              Checkout
+              Number of items in cart: {cart.length}
+            </Text>
+            <Text
+              style={{
+                fontSize: 15,
+                alignSelf: 'center',
+                marginVertical: 5
+              }}
+            >
+              Total cost of items in cart:{' '}
+              <Text style={{ fontWeight: 'bold', color: '#971818' }}>
+                GH₵{calcTotalCostInCart(cart)}
+              </Text>
             </Text>
             <View>
-              <MaterialIcons name="payment" size={22} color="#971818" />
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate('Checkout')}
+                style={{
+                  height: 50,
+                  width: 150,
+                  borderWidth: 2,
+                  borderColor: '#971818',
+                  borderRadius: 5,
+                  padding: 2,
+                  marginVertical: 5,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                  flexDirection: 'row'
+                }}
+              >
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    alignContent: 'center',
+                    color: '#971818',
+                    fontSize: 18,
+                    marginHorizontal: 5
+                  }}
+                >
+                  Checkout
+                </Text>
+                <View>
+                  <MaterialIcons name="payment" size={22} color="#971818" />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };
