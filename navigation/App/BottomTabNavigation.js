@@ -3,18 +3,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Ionicons, Entypo } from '@expo/vector-icons';
-import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
-import ProductsScreen from '../screens/ProductsScreen';
-import CartScreen from '../screens/CartScreen';
-import CardPaymentScreen from '../screens/CardPaymentScreen';
-import CheckoutOptionScreen from '../screens/CheckoutOptionScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import AccountScreen from '../screens/AccountScreen';
-import MessageScreen from '../screens/MessageScreen';
-import ProductDetail from '../screens/ProductDetail';
+import Header from '../../components/Header';
+import HomeScreen from '../../screens/App/HomeScreen';
+import ProductsScreen from '../../screens/App/ProductsScreen';
+import CartScreen from '../../screens/App/CartScreen';
+import CardPaymentScreen from '../../screens/App/CardPaymentScreen';
+import CheckoutOptionScreen from '../../screens/App/CheckoutOptionScreen';
+import NotificationScreen from '../../screens/App/NotificationScreen';
+import AccountScreen from '../../screens/App/AccountScreen';
+import MessageScreen from '../../screens/App/MessageScreen';
+import ProductDetail from '../../screens/App/ProductDetail';
 import { View, Text } from 'react-native';
-import { ProductContext } from '../contexts/ProductsContext';
+import { ProductContext } from '../../contexts/ProductsContext';
 
 const Stack = createStackNavigator();
 const StackScreen = Stack.Screen;
@@ -25,7 +25,7 @@ const HomeStack = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          headerTitle: props => <Header {...props} />
+          headerTitle: (props) => <Header {...props} />,
         }}
       />
       <StackScreen name="Account" component={AccountScreen} />
@@ -39,7 +39,7 @@ const ProductsStack = () => {
       <StackScreen
         name="Products"
         component={ProductsScreen}
-        options={{ headerTitle: props => <Header {...props} /> }}
+        options={{ headerTitle: (props) => <Header {...props} /> }}
       />
       <StackScreen name="Product Detail" component={ProductDetail} />
     </Stack.Navigator>
@@ -52,7 +52,7 @@ const CartStack = () => {
       <StackScreen
         name="Cart"
         component={CartScreen}
-        options={{ headerTitle: props => <Header {...props} /> }}
+        options={{ headerTitle: (props) => <Header {...props} /> }}
       />
       <StackScreen name="Checkout" component={CheckoutOptionScreen} />
       <StackScreen name="Cash Payment" component={MessageScreen} />
@@ -67,7 +67,7 @@ const NotificationStack = () => {
       <StackScreen
         name="Notifications"
         component={NotificationScreen}
-        options={{ headerTitle: props => <Header {...props} /> }}
+        options={{ headerTitle: (props) => <Header {...props} /> }}
       />
     </Stack.Navigator>
   );
@@ -92,7 +92,7 @@ const MainTab = () => {
               size={26}
               color={color}
             />
-          )
+          ),
         }}
       />
       <Screen
@@ -106,7 +106,7 @@ const MainTab = () => {
               size={26}
               color={color}
             />
-          )
+          ),
         }}
       />
       <Screen
@@ -132,7 +132,7 @@ const MainTab = () => {
                     width: 12,
                     height: 12,
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
                   }}
                 >
                   <Text
@@ -143,7 +143,7 @@ const MainTab = () => {
                 </View>
               )}
             </View>
-          )
+          ),
         }}
       />
       <Screen
@@ -157,7 +157,7 @@ const MainTab = () => {
               size={26}
               color={color}
             />
-          )
+          ),
         }}
       />
     </Tab.Navigator>

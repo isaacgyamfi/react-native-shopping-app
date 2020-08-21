@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from '../screens/Auth/LoginScreen';
-import SignUpScreen from '../screens/Auth/SignUpScreen';
-import ResetPasswordScreen from '../screens/Auth/ResetPasswordScreen';
+import LoginScreen from '../../screens/Auth/LoginScreen';
+import SignUpScreen from '../../screens/Auth/SignUpScreen';
+import ResetPasswordScreen from '../../screens/Auth/ResetPasswordScreen';
 
 // implement auth context
 

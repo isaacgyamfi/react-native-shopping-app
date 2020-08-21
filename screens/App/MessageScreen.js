@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
-import { ProductContext } from '../contexts/ProductsContext';
+import { ProductContext } from '../../contexts/ProductsContext';
 
 const MessageScreen = () => {
   const { cart, calcTotalCostInCart } = useContext(ProductContext);

@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import CartItem from '../components/CartItem';
-import { ProductContext } from '../contexts/ProductsContext';
+import CartItem from '../../components/CartItem';
+import { ProductContext } from '../../contexts/ProductsContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const CartScreen = props => {
+const CartScreen = (props) => {
   const { cart, removeProdFromCart, calcTotalCostInCart } = useContext(
-    ProductContext
+    ProductContext,
   );
   return (
     <View style={styles.container}>
@@ -30,7 +30,7 @@ const CartScreen = props => {
               style={{
                 fontSize: 15,
                 alignSelf: 'center',
-                marginVertical: 5
+                marginVertical: 5,
               }}
             >
               Number of items in cart: {cart.length}
@@ -39,7 +39,7 @@ const CartScreen = props => {
               style={{
                 fontSize: 15,
                 alignSelf: 'center',
-                marginVertical: 5
+                marginVertical: 5,
               }}
             >
               Total cost of items in cart:{' '}
@@ -61,7 +61,7 @@ const CartScreen = props => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   alignSelf: 'center',
-                  flexDirection: 'row'
+                  flexDirection: 'row',
                 }}
               >
                 <Text
@@ -70,7 +70,7 @@ const CartScreen = props => {
                     alignContent: 'center',
                     color: '#971818',
                     fontSize: 18,
-                    marginHorizontal: 5
+                    marginHorizontal: 5,
                   }}
                 >
                   Checkout
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignContent: 'center'
-  }
+    alignContent: 'center',
+  },
 });
 
 export default CartScreen;

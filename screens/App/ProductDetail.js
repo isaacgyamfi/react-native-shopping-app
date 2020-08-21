@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { ProductContext } from '../contexts/ProductsContext';
-import { globalStyles } from '../components/global';
+import { ProductContext } from '../../contexts/ProductsContext';
+import { globalStyles } from '../../components/global';
 
 const ProductDetail = ({ route }) => {
   const { addProdToCart } = useContext(ProductContext);
@@ -22,7 +22,7 @@ const ProductDetail = ({ route }) => {
               fontWeight: 'bold',
               fontSize: 30,
               color: '#971818',
-              paddingVertical: 10
+              paddingVertical: 10,
             }}
           >
             GH₵{item.price}

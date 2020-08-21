@@ -4,14 +4,14 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  FlatList
+  FlatList,
 } from 'react-native';
-import ProductItem from '../components/ProductItem';
+import ProductItem from '../../components/ProductItem';
 import { AntDesign } from '@expo/vector-icons';
-import { ProductContext } from '../contexts/ProductsContext';
+import { ProductContext } from '../../contexts/ProductsContext';
 import { useNavigation } from '@react-navigation/native';
 
-const ProductsScreen = props => {
+const ProductsScreen = (props) => {
   const navigation = useNavigation();
   const { pdts, addProdToCart, cart } = useContext(ProductContext);
 
@@ -20,7 +20,7 @@ const ProductsScreen = props => {
       <View style={{ flex: 9 }}>
         <FlatList
           data={pdts}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => navigation.navigate('Product Detail', { item })}
@@ -35,7 +35,7 @@ const ProductsScreen = props => {
           style={{
             fontSize: 18,
             alignSelf: 'center',
-            marginVertical: 5
+            marginVertical: 5,
           }}
         >
           Total number of items in cart: {cart.length}
@@ -49,7 +49,7 @@ const ProductsScreen = props => {
               alignSelf: 'center',
               alignContent: 'center',
               color: '#971818',
-              fontSize: 14
+              fontSize: 14,
             }}
           >
             View Cart
@@ -66,7 +66,7 @@ const ProductsScreen = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30
+    paddingTop: 30,
   },
   button: {
     height: 40,
@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+  },
 });
 
 export default ProductsScreen;
